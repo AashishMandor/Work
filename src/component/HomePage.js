@@ -1,9 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import { Container, Grid, Paper } from "@mui/material";
-import CountUp from "react-countup";
-import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import CountUp from "react-countup";
+import styled, { createGlobalStyle } from "styled-components";
 
 const HomePage = () => {
   const [sclassStudents, setSclassStudents] = useState([]);
@@ -33,35 +34,52 @@ const HomePage = () => {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={3} lg={3}>
-          <StyledPaper sx={{ backgroundColor: "var(--orange)" }}>
-            <Data start={0} end={numberOfStudents} duration={2.5} />
-            <hr className="divider" />
-            <Title>Total Checkin Today</Title>
-          </StyledPaper>
-        </Grid>
+      <Grid item xs={12} md={3} lg={3}>
+      <StyledPaper sx={{ backgroundColor: "var(--orange)", padding: 2 }}>
+        {/* Flex container to align number and icon */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Data start={0} end={numberOfStudents} duration={2.5} />
+          <LeaderboardIcon sx={{ fontSize: 30, marginLeft: 21, marginTop: 3 , color: 'white'}} /> {/* Icon next to the number */}
+        </div>
+        <hr className="divider" style={{ marginBottom: '-5px', width:"100%"}} /> {/* Adjust divider margin */}
+        <Title sx={{ marginTop: '10px' }}>Total Check In Today</Title> {/* Move title upwards */}
+      </StyledPaper>
+    </Grid>
 
-        <Grid item xs={12} md={3} lg={3}>
-          <StyledPaper sx={{ backgroundColor: "var(--green)" }}>
-            <Data start={0} end={numberOfSessions} duration={5} />
-            <hr className="divider" />
-            <Title>Out of Office Now</Title>
-          </StyledPaper>
-        </Grid>
+       
+
+<Grid item xs={12} md={3} lg={3}>
+      <StyledPaper sx={{ backgroundColor: "var(--green)", padding: 2 }}>
+        {/* Flex container to align number and icon */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Data start={0} end={numberOfSessions} duration={5} />
+          <LeaderboardIcon sx={{ fontSize: 30, marginLeft: 21, marginTop: 3 , color: 'white'}} /> {/* Icon next to the number */}
+        </div>
+        <hr className="divider" style={{ marginBottom: '-5px',width:"100%" }} /> 
+        <Title sx={{ marginTop: '10px' }}>Out of Office Now</Title> 
+      </StyledPaper>
+    </Grid>
+
 
         <Grid item xs={12} md={3} lg={3}>
           <StyledPaper sx={{ backgroundColor: "var(--red)" }}>
+            <div style={{display: "flex", alignItems: "center"}}>
             <Data start={0} end={24} duration={4} />
-            <hr className="divider" />
-            <Title>Total Checkout</Title>
+            <LeaderboardIcon sx={{ fontSize: 30, marginLeft: 19, marginTop: 3 , color: 'white'}} /> 
+            </div>
+            <hr className="divider" style={{marginBottom: '-5px',width:"100%" }} />
+            <Title sx={{ marginTop: '10px' }}>Total Checkout</Title>
           </StyledPaper>
         </Grid>
 
         <Grid item xs={12} md={3} lg={3}>
           <StyledPaper sx={{ backgroundColor: "var(--darkblue)" }}>
+          <div style={{display: "flex", alignItems: "center"}}>
             <Data start={0} end={30} duration={4} suffix="hrs" />
-            <hr className="divider" />
-            <Title>Late Reporting</Title>
+            <LeaderboardIcon sx={{ fontSize: 30, marginLeft: 15, marginTop: 3 , color: 'white'}} /> 
+            </div>
+            <hr className="divider"  style={{marginBottom: '-5px',width:"100%" }}/>
+            <Title sx={{ marginTop: '10px' }}>Late Reporting</Title>
           </StyledPaper>
         </Grid>
 
@@ -77,7 +95,13 @@ const HomePage = () => {
               backgroundColor: "var(--darkpurple)",
             }}
           >
-            <h4 style={{ color: "white" }}>My Organization</h4>
+           <h4 style={{ color: "white", display: "flex", justifyContent: "space-between" }}>
+  My Organization
+  <span style={{ textAlign: "right", flex: "1" }}>
+    | ver 3.21 : 10 | ver 3.1 : 1 | ver 3.0 : 2 | iOS : 2   
+  </span>
+</h4>
+
           </Paper>
         </Grid>
         <Grid item xs={12}>
@@ -94,34 +118,22 @@ const HomePage = () => {
         .map((_, index) => (
           <div
             key={index}
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              flexDirection: "column", 
-              width: "170px",
-              border: "1px solid black",
-              borderRadius: "8px",
-              // padding: "8px", 
-            }}
+            style={styles.maintenanceDetails}
+           
           >
             <h6 style={styles.maintenanceTitle}>
-              COLONY MAINTENANCE-ELE
+              COLONY MAINTENANCE-ELE 
+              
             </h6>
 
-            <hr className="divider" style={{ width: "100%" }} />
+            <hr className="divider" style={{ width: "100%", color:"red"}} />
 
-            <div   style={{
-              // alignItems: "flex-start",
-              display:"flex",
-              justifycontent: "center",
-              alignitems: "center"
-
-
-              // padding: "8px", 
-            }}>
-              <p style={styles.boxx}>IN : {0} | OUT : {1}</p>
+            <div   style={styles.maintenanceDetails2}>
+              <p style={{textAlign:"center" , background:"white",}}>IN : {0} | OUT : {1}</p>
+              </div>
+              <hr className='divider' style={{width: "100%" }}/>
             </div>
-          </div>
+           
         ))}
     </div>
   </Paper>
@@ -185,6 +197,20 @@ const styles = {
     padding: "10px",
     fontSize: "10px",
   },
+  maintenanceDetails: {display: "flex",
+      alignItems: "flex-start",
+      flexDirection: "column", 
+      // outerHeight:"40%",
+      width: "170px",
+      border: "1px solid black",
+      borderRadius: "8px", 
+      backgroundColor:"red"
+  },
+  maintenanceDetails2: {
+  background:"white",
+  width:"100%"
+
+  }
   
 };
 

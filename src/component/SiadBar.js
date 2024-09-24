@@ -1,15 +1,14 @@
+import { Box, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import * as React from 'react';
-import { Divider, ListItemButton, ListItemIcon, ListItemText, Box } from '@mui/material';
 
-import HomeIcon from '@mui/icons-material/Home';
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 import DehazeIcon from '@mui/icons-material/Dehaze';
+import HomeIcon from '@mui/icons-material/Home';
+import LayersIcon from '@mui/icons-material/Layers';
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 const SideBar = () => {
     return (
-        <Box sx={{ backgroundColor: 'rgb(21, 27, 141)', height: '100vh', color: 'white' }}> {/* RGB background color */}
+        <Box sx={{ backgroundColor: 'rgb(21, 27, 141)', height: '100vh', color: 'white', marginTop:'-10px'}}> {/* RGB background color */}
             <ListItemButton>
                 <ListItemIcon sx={{ color: 'white' }}> {/* Icons in white */}
                     <HomeIcon />
@@ -19,28 +18,28 @@ const SideBar = () => {
 
             <ListItemButton>
                 <ListItemIcon sx={{ color: 'white' }}>
-                    <AnnouncementOutlinedIcon />
+                    <SaveAsIcon />
                 </ListItemIcon>
                 <ListItemText primary="Duty Roster" />
             </ListItemButton>
 
             <ListItemButton>
                 <ListItemIcon sx={{ color: 'white' }}>
-                    <AccountCircleOutlinedIcon />
+                    <LayersIcon />
                 </ListItemIcon>
                 <ListItemText primary="Reports" />
             </ListItemButton>
 
             <ListItemButton>
                 <ListItemIcon sx={{ color: 'white' }}>
-                    <ExitToAppIcon />
+                    <DehazeIcon />
                 </ListItemIcon>
                 <ListItemText primary="Contact us" />
             </ListItemButton>
 
             <ListItemButton>
                 <ListItemIcon sx={{ color: 'white' }}>
-                    <AccountCircleOutlinedIcon />
+                    <LayersIcon />
                 </ListItemIcon>
                 <ListItemText primary="Masters" />
             </ListItemButton>
